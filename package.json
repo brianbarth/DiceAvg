@@ -1,0 +1,17 @@
+{
+  "name": "dice",
+  "version": "1.0.0",
+  "description": "diceAveragingProgram",
+  "main": "dice.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BrianBarth",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.0.11",
+    "hapi": "^17.5.1",
+    "inert": "^5.1.0",
+    "vision": "^5.3.3"
+  }
+}
