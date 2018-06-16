@@ -134,9 +134,9 @@ const percentage = function() {
 
 let avgAllNums = percentage(results);
 
-fs.appendFile('percentageData.txt', avgAllNums, function (err) {
+fs.appendFile('./static/percentageData.json', JSON.stringify(avgAllNums), function (err) {
   if (err) throw err;
   console.log('Updated!');
 });
 
-// create file system to store return avgSeven; should be array? Read and Write
+//create file system to store return avgSeven; should be array? Read and Write

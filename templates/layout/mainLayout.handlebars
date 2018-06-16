@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DiceAverage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+</head>
+<body>
+
+  <div class='jumbotron m-4'>
+    <p class='text-center'>Hello World! This is the Dice Average Stat App</p>
+  </div>
+
+  <form class='m-4' action='/' method='post'>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Number Of Rolls</label>
+      <input type="text" class="form-control" id="numRolls" aria-describedby="numberOfRolls" placeholder="Number of Rolls" name="numRolls">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  {{#if rolls}}
+    <div class='alert alert-success m-4'>
+      <p>Number of rolls chosen: {{rolls}}</p>
+    </div>
+  {{/if}}
+
+</body>
+</html>
