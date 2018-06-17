@@ -127,14 +127,24 @@ const percentage = function() {
     console.log('Eightss: ' + avgEights + '% \t Nines: ' + avgNines + '% \t Tens: ' + avgTens);
     console.log('Elevens: ' + avgElevens + '% \t Twelves: ' + avgTwelves);
 
-    let avgSet = [avgTwos, avgThrees, avgFours, avgFives, avgSixes, avgSevens, avgEights, avgNines,avgTens,avgElevens, avgTwelves, '\n'];
+    let avgSet = [avgTwos, avgThrees, avgFours, avgFives, avgSixes, avgSevens, avgEights, avgNines,avgTens,avgElevens, avgTwelves];
     return avgSet;
 };
 
-
 let avgAllNums = percentage(results);
+console.log(avgAllNums);
 
-fs.appendFile('./static/percentageData.json', JSON.stringify(avgAllNums), function (err) {
+let writeArray = {
+    array: []
+};
+
+for (i = 0; i < avgAllNums.length; i += 1) {
+    writeArray.array.push(avgAllNums[i]);
+}
+
+let cleanJSON = JSON.stringify(writeArray);
+console.log(cleanJSON);
+fs.appendFile('./static/percentageData.json', '\n' + cleanJSON, function (err) {
   if (err) throw err;
   console.log('Updated!');
 });
