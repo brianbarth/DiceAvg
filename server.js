@@ -4,7 +4,9 @@ const Hapi = require('hapi');
 const Inert = require('inert');
 const Path = require('path');
 const Vision = require('vision');
-const percentageData = require('./static/percentageData.json');
+const fs = require('fs');
+const Dice = require('./dice.js');
+
 
 const server = Hapi.server({
   port: 3000,
@@ -29,7 +31,6 @@ const start = async () => {
     relativeTo: __dirname,
     path: 'templates',
     layoutPath: 'templates/layout',
-    helpersPath: 'templates/helpers'
   });
 
   server.route({

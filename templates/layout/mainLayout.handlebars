@@ -19,7 +19,7 @@
       <label for="exampleInputEmail1">Number Of Rolls</label>
       <input type="text" class="form-control" id="numRolls" aria-describedby="numberOfRolls" placeholder="Number of Rolls" name="numRolls">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" onclick="Dice.rollFunctions(numRolls)">Submit</button>
   </form>
 
   {{#if rolls}}
