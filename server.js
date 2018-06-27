@@ -37,8 +37,6 @@ const start = async () => {
     path: '/',
     handler: function(request, h) {
     
-      request.payload.numRolls == null;
-    
       const data = fs.readFileSync('./static/percentageData.txt', "utf8");
 
       const rows = data.split('\n').slice(1);
