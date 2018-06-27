@@ -5,8 +5,7 @@ const Inert = require('inert');
 const Path = require('path');
 const Vision = require('vision');
 const fs = require('fs');
-const Dice = require('./dice.js');
-
+const doDiceThing = require('./dice.js');
 
 const server = Hapi.server({
   port: 3000,
@@ -37,8 +36,16 @@ const start = async () => {
     method: 'GET',
     path: '/',
     handler: function(request, h) {
+    
+      request.payload.numRolls == null;
+    
+      const data = fs.readFileSync('./static/percentageData.txt', "utf8");
+
+      const rows = data.split('\n').slice(1);
+      const rollData = rows.map( row => row.split(',').map( value => parseFloat(value) ) );
+    
+      return h.view('index', {rollData}, viewOptions);
      
-      return h.view('index', {}, viewOptions);
     }
   });
 
@@ -46,10 +53,34 @@ const start = async () => {
     method: 'POST',
     path: '/',
     handler: function(request, h) {
-
+      
       let rolls = request.payload.numRolls;
-      console.log(rolls);
-      return h.view('index', {rolls}, viewOptions);
+
+      doDiceThing(rolls);
+      
+      const data = fs.readFileSync('./static/percentageData.txt', "utf8");
+      
+      const rows = data.split('\n').slice(1);
+      const rollData = rows.map( row => row.split(',').map( value => parseFloat(value) ) );
+      
+      return h.view('index', { rolls, rollData }, viewOptions);
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/remove.handlebars',
+    handler: function(request, h) {
+      
+      function deleteAll() {
+        fs.unlinkSync('./static/percentageData.txt', null);
+        console.log('File Deleted!');
+        fs.openSync('./static/percentageData.txt', 'w');
+        console.log('New File Created!');
+      }
+      deleteAll();
+
+      return h.view('remove', {}, viewOptions);
     }
   });
 

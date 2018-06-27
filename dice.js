@@ -1,6 +1,6 @@
 let fs = require('fs');
 
-exports.rollFunctions = function (rolls) {
+module.exports = function (rolls, callback) {
     
     const startRolls = function(){
         console.log("onclick function call works");
@@ -112,17 +112,17 @@ exports.rollFunctions = function (rolls) {
         for (let i = 0; i < results.length; i = i + 1) {
             total += results[i];
         }
-        let avgTwos = results[0] / total;
-        let avgThrees = results[1] / total;
-        let avgFours = results[2] / total;
-        let avgFives = results[3] / total;
-        let avgSixes = results[4] / total;
-        let avgSevens = results[5] / total;
-        let avgEights = results[6] / total;
-        let avgNines = results[7] / total;
-        let avgTens = results[8] / total;
-        let avgElevens = results[9] / total;
-        let avgTwelves = results[10] / total;
+        let avgTwos = (results[0] / total).toFixed(5);
+        let avgThrees = (results[1] / total).toFixed(5);
+        let avgFours = (results[2] / total).toFixed(5);
+        let avgFives = (results[3] / total).toFixed(5);
+        let avgSixes = (results[4] / total).toFixed(5);
+        let avgSevens = (results[5] / total).toFixed(5);
+        let avgEights = (results[6] / total).toFixed(5);
+        let avgNines = (results[7] / total).toFixed(5);
+        let avgTens = (results[8] / total).toFixed(5);
+        let avgElevens = (results[9] / total).toFixed(5);
+        let avgTwelves = (results[10] / total).toFixed(5);
 
         console.log('Percentage of rolls by number:');
         console.log('Twos: ' + avgTwos + '% \t\t Threes: ' + avgThrees + '% \t Fours: ' + avgFours);
@@ -130,18 +130,14 @@ exports.rollFunctions = function (rolls) {
         console.log('Eightss: ' + avgEights + '% \t Nines: ' + avgNines + '% \t Tens: ' + avgTens);
         console.log('Elevens: ' + avgElevens + '% \t Twelves: ' + avgTwelves);
 
-        let avgSet = [avgTwos, avgThrees, avgFours, avgFives, avgSixes, avgSevens, avgEights, avgNines,avgTens,avgElevens, avgTwelves];
+        let avgSet = [rolls, avgTwos, avgThrees, avgFours, avgFives, avgSixes, avgSevens, avgEights, avgNines,avgTens,avgElevens, avgTwelves];
         return avgSet;
     };
 
     let avgAllNums = percentage(results);
     console.log(avgAllNums);
 
-    fs.appendFile('./static/percentageData.txt', '\n' + avgAllNums, function (err) {
-    if (err) throw err;
-    console.log('Updated!');
-    });
+    fs.appendFileSync('./static/percentageData.txt', '\n' + avgAllNums);
 
 };
 
-//create file system to store return avgSeven; should be array? Read and Write

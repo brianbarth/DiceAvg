@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "BrianBarth",
+  "nodemonConfig": {
+    "ext": "js,handlebars,json,txt,html,css"
+  },
   "license": "ISC",
   "dependencies": {
     "handlebars": "^4.0.11",

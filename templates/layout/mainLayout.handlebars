@@ -7,6 +7,7 @@
     <title>DiceAverage</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 </head>
 <body>
 
@@ -19,14 +20,52 @@
       <label for="exampleInputEmail1">Number Of Rolls</label>
       <input type="text" class="form-control" id="numRolls" aria-describedby="numberOfRolls" placeholder="Number of Rolls" name="numRolls">
     </div>
-    <button type="submit" class="btn btn-primary" onclick="Dice.rollFunctions(numRolls)">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href='/remove.handlebars'><button type="button" class="btn btn-primary float-right">DeleteAll</button></a>
   </form>
-
+  {{{content}}}
   {{#if rolls}}
-    <div class='alert alert-success m-4'>
+    <div class='alert alert-success text-center m-4'>
       <p>Number of rolls chosen: {{rolls}}</p>
     </div>
   {{/if}}
+  <style>
+    #scrollBox {
+    border: 2px solid #d4edda;
+    overflow: scroll;
+    height: 350px;
+    border-radius: 5px;
+    font-family: 'Inconsolata', monospace;
+    }
+  </style>
+
+  <div class='container'>
+    <div class='row' id='labels'>
+      <div class='col text-center'><strong><u>#Rolls</u></strong></div>
+      <div class='col text-center'><strong><u>Twos</u></strong></div>
+      <div class='col text-center'><strong><u>Threes</u></strong></div>
+      <div class='col text-center'><strong><u>Fours</u></strong></div>
+      <div class='col text-center'><strong><u>Fives</u></strong></div>
+      <div class='col text-center'><strong><u>Sixes</u></strong></div>
+      <div class='col text-center'><strong><u>Sevens</u></strong></div>
+      <div class='col text-center'><strong><u>Eights</u></strong></div>
+      <div class='col text-center'><strong><u>Nines</u></strong></div>
+      <div class='col text-center'><strong><u>Tens</u></strong></div>
+      <div class='col text-center'><strong><u>Elevens</u></strong></div>
+      <div class='col text-center'><strong><u>Twelves</u></strong></div>   
+    </div>
+  </div>
+  <div>
+    <div class='container pt-2' id='scrollBox'>
+      {{#each rollData}}
+        <div class='row'>
+          {{#each this}}
+            <div class='col text-left'>{{this}}</div>
+          {{/each}}
+        </div>
+      {{/each}}
+  </div>
+ </div>
 
 </body>
 </html>
